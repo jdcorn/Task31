@@ -16,6 +16,9 @@
 		6D85CEB623CFB61D006DC06C /* Task+Convenience.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6D85CEB523CFB61D006DC06C /* Task+Convenience.swift */; };
 		6D85CEB823CFB6AF006DC06C /* CoreDataStack.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6D85CEB723CFB6AF006DC06C /* CoreDataStack.swift */; };
 		6D85CEBA23CFB7E9006DC06C /* TaskController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6D85CEB923CFB7E9006DC06C /* TaskController.swift */; };
+		6D85CEBC23CFBB14006DC06C /* TaskListTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6D85CEBB23CFBB14006DC06C /* TaskListTableViewController.swift */; };
+		6D85CEBE23CFBB22006DC06C /* TaskDetailTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6D85CEBD23CFBB22006DC06C /* TaskDetailTableViewController.swift */; };
+		6D85CEC023CFCE7F006DC06C /* DateHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6D85CEBF23CFCE7F006DC06C /* DateHelper.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -30,6 +33,9 @@
 		6D85CEB523CFB61D006DC06C /* Task+Convenience.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Task+Convenience.swift"; sourceTree = "<group>"; };
 		6D85CEB723CFB6AF006DC06C /* CoreDataStack.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoreDataStack.swift; sourceTree = "<group>"; };
 		6D85CEB923CFB7E9006DC06C /* TaskController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TaskController.swift; sourceTree = "<group>"; };
+		6D85CEBB23CFBB14006DC06C /* TaskListTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TaskListTableViewController.swift; sourceTree = "<group>"; };
+		6D85CEBD23CFBB22006DC06C /* TaskDetailTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TaskDetailTableViewController.swift; sourceTree = "<group>"; };
+		6D85CEBF23CFCE7F006DC06C /* DateHelper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DateHelper.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -112,6 +118,8 @@
 		6D85CEB023CFB36F006DC06C /* ViewControllers */ = {
 			isa = PBXGroup;
 			children = (
+				6D85CEBB23CFBB14006DC06C /* TaskListTableViewController.swift */,
+				6D85CEBD23CFBB22006DC06C /* TaskDetailTableViewController.swift */,
 			);
 			path = ViewControllers;
 			sourceTree = "<group>";
@@ -120,6 +128,7 @@
 			isa = PBXGroup;
 			children = (
 				6D85CEB923CFB7E9006DC06C /* TaskController.swift */,
+				6D85CEBF23CFCE7F006DC06C /* DateHelper.swift */,
 			);
 			path = ModelControllers;
 			sourceTree = "<group>";
@@ -198,8 +207,11 @@
 				6D85CEB823CFB6AF006DC06C /* CoreDataStack.swift in Sources */,
 				6D85CEB623CFB61D006DC06C /* Task+Convenience.swift in Sources */,
 				6D85CE9923CFB2A6006DC06C /* AppDelegate.swift in Sources */,
+				6D85CEBE23CFBB22006DC06C /* TaskDetailTableViewController.swift in Sources */,
 				6D85CE9B23CFB2A6006DC06C /* SceneDelegate.swift in Sources */,
 				6D85CEBA23CFB7E9006DC06C /* TaskController.swift in Sources */,
+				6D85CEC023CFCE7F006DC06C /* DateHelper.swift in Sources */,
+				6D85CEBC23CFBB14006DC06C /* TaskListTableViewController.swift in Sources */,
 				6D85CEB423CFB4C8006DC06C /* Task31.xcdatamodeld in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -345,7 +357,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
-				INFOPLIST_FILE = Task31/Info.plist;
+				INFOPLIST_FILE = "$(SRCROOT)/Task31/Resources/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -362,7 +374,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
-				INFOPLIST_FILE = Task31/Info.plist;
+				INFOPLIST_FILE = "$(SRCROOT)/Task31/Resources/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
