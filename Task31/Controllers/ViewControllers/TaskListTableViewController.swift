@@ -34,7 +34,7 @@ class TaskListTableViewController: UITableViewController {
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         guard let cell = tableView.dequeueReusableCell(withIdentifier: "taskCell", for: indexPath) as? ButtonTableViewCell else {return UITableViewCell()}
         
-        let task = TaskController.shared.tasks[indexPath.row]
+        let task = TaskController.shared.fetchedResultsController.object(at: indexPath)
         cell.update(withTask: task)
         cell.updateButton(task.isComplete)
         cell.delegate = self
@@ -44,9 +44,9 @@ class TaskListTableViewController: UITableViewController {
 
     override func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCell.EditingStyle, forRowAt indexPath: IndexPath) {
         if editingStyle == .delete {
-            let task = TaskController.shared.tasks[indexPath.row]
+            let task = TaskController.shared.fetchedResultsController.object(at: indexPath)
             TaskController.shared.remove(task: task)
-            tableView.deleteRows(at: [indexPath], with: .fade)
+//            tableView.deleteRows(at: [indexPath], with: .fade)
         }
     }
 
@@ -55,7 +55,7 @@ class TaskListTableViewController: UITableViewController {
         if segue.identifier == "toTaskDetail" {
             guard let indexPath = tableView.indexPathForSelectedRow,
                 let destinationVC = segue.destination as? TaskDetailTableViewController else { return }
-            let task = TaskController.shared.tasks[indexPath.row]
+            let task = TaskController.shared.fetchedResultsController.object(at: indexPath)
             destinationVC.tasks = task
             destinationVC.dueDateValue = task.due
         }
@@ -67,6 +67,7 @@ extension TaskListTableViewController: ButtonTableViewCellDelegate {
         guard let indexPath = tableView.indexPath(for: sender) else {return}
         let task = TaskController.shared.tasks[indexPath.row]
         TaskController.shared.toggleIsCompleteFor(task: task)
+        sender.updateButton(task.isComplete)
         tableView.reloadData()
     }
 }

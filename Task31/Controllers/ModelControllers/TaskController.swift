@@ -38,7 +38,7 @@ class TaskController {
     
     // MARK: - CRUD Functions
     func add(taskWithName name: String, notes: String?, due: Date?) {
-        _ = Task(name: name)
+        _ = Task(name: name, notes: notes, due: due, isComplete: false, context: CoreDataStack.context)
         saveToPersistence()
     }
     
@@ -60,10 +60,9 @@ class TaskController {
     }
     
     func saveToPersistence() {
-        let moc = CoreDataStack.context
         do {
-            try moc.save()
-        } catch let error {
+            try CoreDataStack.context.save()
+        } catch {
             print("error saving \(error.localizedDescription)")
         }
     }

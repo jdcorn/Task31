@@ -37,14 +37,15 @@ class TaskDetailTableViewController: UITableViewController {
     }
     
     @IBAction func saveButtonTapped(_ sender: Any) {
+        
+        guard let name = nameTextField.text, let notes = notesTextView.text, let due = dueDateValue
+            else { return }
+        
         if let task = tasks {
-            let due = tasks?.due
-            guard let name = nameTextField.text else {return}
-            TaskController.shared.update(task: task, name: name, notes: notesTextView.text, due: due)
+            TaskController.shared.update(task: task, name: name, notes: notes, due: due)
+        
         } else {
-            let due = dueDatePicker.date
-            guard let name = nameTextField.text,
-            let notes = notesTextView.text else {return}
+            
             TaskController.shared.add(taskWithName: name, notes: notes, due: due)
         }
         navigationController?.popViewController(animated: true)
@@ -52,6 +53,7 @@ class TaskDetailTableViewController: UITableViewController {
     
     @IBAction func datePickerValueChanged(_ sender: Any) {
         dateTextField.text = dueDatePicker.date.stringValue()
+        self.dueDateValue = dueDatePicker.date
     }
     
     @IBAction func tapGestureTapped(_ sender: Any) {
@@ -63,11 +65,13 @@ class TaskDetailTableViewController: UITableViewController {
     // MARK: - Functions
     func updateViews() {
         loadViewIfNeeded()
-        if let task = tasks,
-            let due = tasks?.due {
+        guard let task = tasks else {return}
             nameTextField.text = task.name
             notesTextView.text = task.notes
-            dateTextField.text = due.stringValue()
-        }
+//        }
+//        if let due = tasks?.due {
+            dateTextField.text = task.due?.stringValue()
+            print("test")
+        
     }
 }
