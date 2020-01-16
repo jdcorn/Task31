@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="15702" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="15702" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="YJC-Nj-YVO">
     <device id="retina6_1" orientation="portrait" appearance="light"/>
     <dependencies>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="15704"/>
@@ -15,23 +15,47 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                         <prototypes>
-                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="taskCell" textLabel="lfs-1W-LYW" style="IBUITableViewCellStyleDefault" id="Twh-Xb-5KO">
-                                <rect key="frame" x="0.0" y="28" width="414" height="43.5"/>
+                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="taskCell" rowHeight="82" id="Twh-Xb-5KO" customClass="ButtonTableViewCell" customModule="Task31" customModuleProvider="target">
+                                <rect key="frame" x="0.0" y="28" width="414" height="82"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="Twh-Xb-5KO" id="pRt-pW-nfg">
-                                    <rect key="frame" x="0.0" y="0.0" width="414" height="43.5"/>
+                                    <rect key="frame" x="0.0" y="0.0" width="414" height="82"/>
                                     <autoresizingMask key="autoresizingMask"/>
                                     <subviews>
-                                        <label opaque="NO" multipleTouchEnabled="YES" contentMode="left" insetsLayoutMarginsFromSafeArea="NO" text="Title" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="lfs-1W-LYW">
-                                            <rect key="frame" x="20" y="0.0" width="374" height="43.5"/>
-                                            <autoresizingMask key="autoresizingMask"/>
-                                            <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                            <nil key="textColor"/>
-                                            <nil key="highlightedColor"/>
-                                        </label>
+                                        <stackView opaque="NO" contentMode="scaleToFill" spacing="5" translatesAutoresizingMaskIntoConstraints="NO" id="WoB-pm-orP">
+                                            <rect key="frame" x="21" y="12" width="374" height="58"/>
+                                            <subviews>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Sf6-yX-l48">
+                                                    <rect key="frame" x="0.0" y="0.0" width="319" height="58"/>
+                                                    <fontDescription key="fontDescription" type="system" weight="thin" pointSize="45"/>
+                                                    <nil key="textColor"/>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
+                                                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="F2X-P4-Opd">
+                                                    <rect key="frame" x="324" y="0.0" width="50" height="58"/>
+                                                    <constraints>
+                                                        <constraint firstAttribute="width" secondItem="F2X-P4-Opd" secondAttribute="height" multiplier="1:1" id="CE8-xi-2ID"/>
+                                                        <constraint firstAttribute="height" constant="50" id="Hcd-Ke-GQJ"/>
+                                                        <constraint firstAttribute="width" constant="50" id="PY8-g2-2gG"/>
+                                                    </constraints>
+                                                    <state key="normal" image="incomplete"/>
+                                                    <connections>
+                                                        <action selector="completeButtonTapped:" destination="Twh-Xb-5KO" eventType="touchUpInside" id="8HC-Qe-Pij"/>
+                                                    </connections>
+                                                </button>
+                                            </subviews>
+                                        </stackView>
                                     </subviews>
+                                    <constraints>
+                                        <constraint firstAttribute="bottomMargin" secondItem="WoB-pm-orP" secondAttribute="bottom" constant="1" id="UKD-or-L5k"/>
+                                        <constraint firstItem="WoB-pm-orP" firstAttribute="top" secondItem="pRt-pW-nfg" secondAttribute="topMargin" constant="1" id="Zuh-5s-zhR"/>
+                                        <constraint firstItem="WoB-pm-orP" firstAttribute="leading" secondItem="pRt-pW-nfg" secondAttribute="leadingMargin" constant="1" id="ee1-Px-RfD"/>
+                                        <constraint firstItem="WoB-pm-orP" firstAttribute="trailing" secondItem="pRt-pW-nfg" secondAttribute="trailingMargin" constant="1" id="lK6-DH-GtV"/>
+                                    </constraints>
                                 </tableViewCellContentView>
                                 <connections>
+                                    <outlet property="completeButton" destination="F2X-P4-Opd" id="ZRP-Eh-C7Z"/>
+                                    <outlet property="primaryLabel" destination="Sf6-yX-l48" id="Pv4-v8-Ej6"/>
                                     <segue destination="m3k-Zk-1f3" kind="show" identifier="toTaskDetail" id="p8u-Zr-QPg"/>
                                 </connections>
                             </tableViewCell>
@@ -52,7 +76,7 @@
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="GHL-gk-tYV" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-529" y="29"/>
+            <point key="canvasLocation" x="-530.43478260869574" y="28.794642857142854"/>
         </scene>
         <!--Task Detail Table View Controller-->
         <scene sceneID="gd4-f6-6zg">
@@ -200,6 +224,9 @@
             <point key="canvasLocation" x="-1399" y="29"/>
         </scene>
     </scenes>
+    <resources>
+        <image name="incomplete" width="512" height="512"/>
+    </resources>
     <inferredMetricsTieBreakers>
         <segue reference="p8u-Zr-QPg"/>
     </inferredMetricsTieBreakers>

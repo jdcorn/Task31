@@ -11,7 +11,11 @@ import UIKit
 class TaskDetailTableViewController: UITableViewController {
     
     // MARK: - Properties
-    var tasks: Task?
+    var tasks: Task? {
+        didSet {
+            updateViews()
+        }
+    }
     var dueDateValue: Date?
 
     // MARK: - Outlets
@@ -23,8 +27,8 @@ class TaskDetailTableViewController: UITableViewController {
     // MARK: - View Lifecycle
     override func viewDidLoad() {
         super.viewDidLoad()
-        updateViews()
         dateTextField.inputView = dueDatePicker
+        
     }
     
     // MARK: - Actions
@@ -58,12 +62,12 @@ class TaskDetailTableViewController: UITableViewController {
     
     // MARK: - Functions
     func updateViews() {
-        guard let task = tasks,
-            let due = tasks?.due,
-            isViewLoaded
-            else {return}
-        nameTextField.text = task.name
-        notesTextView.text = task.notes
-        dateTextField.text = due.stringValue()
+        loadViewIfNeeded()
+        if let task = tasks,
+            let due = tasks?.due {
+            nameTextField.text = task.name
+            notesTextView.text = task.notes
+            dateTextField.text = due.stringValue()
+        }
     }
 }
